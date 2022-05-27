@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Counter from './components/counter/Counter.jsx';
 import Counters from './components/counters/Counters.jsx';
+import NavBar from './components/Navbar/NavBar.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -15,9 +16,12 @@ class App extends Component {
   render(){
   return (
     <div className="App">
-      <h1>Hello, Porphyry's Wanderers</h1>
+      <h1>Hello, Porphyry's Wanderers</h1> <NavBar />
           <img src='this.state.imgURL' alt="Porphyry's logo"/>
-      <Counters />
+          <main>
+            <Counters />
+          </main>
+      
     </div>
   );}
 }

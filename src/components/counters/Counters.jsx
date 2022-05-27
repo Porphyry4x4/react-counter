@@ -11,7 +11,8 @@ class Counters extends Component{
                    { id: 3, value: 0 },
                    { id: 4, value: 0 },
                    { id: 5, value: 0 }
-                ]
+                ],
+        tags: ['tag1', 'tag2', 'tag3']
 
     };
     render() {
@@ -19,11 +20,16 @@ class Counters extends Component{
         return(
             <div>
                 <button 
-                onclick={this.handleReset}
-                className='btn btn-primary btn-small m-2'>Reset</button>
+                onClick={this.handleReset}
+                className='btn btn-primary btn-small m-2'>Reset</button><br/>
                 {this.state.counters.map(counter => (
-                     <Counter key={counter.id} value={counter.value}
-                      id={counter.id} onDelete={this.handleDelete} />
+                     <Counter key={counter.id} 
+                      value={counter.value}
+                      id={counter.id}
+                      onDelete={this.handleDelete} 
+                      counter={counter}
+                      onIncrement={this.handleIncrement}
+                      tags={this.state.tags}/>
                 ))}
              
             </div>
@@ -44,7 +50,15 @@ class Counters extends Component{
         this.setState({counters: counters});
        }
 
-    
+       handleIncrement = counter => {
+        const counters = [...this.state.counters];
+        const index = counters.indexOf(counter);
+        counters[index] = {...counter};
+        counters[index].value++;
+        this.setState({counters: counters})
+
+    }
+   
 
 }
 
